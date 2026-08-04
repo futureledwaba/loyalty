@@ -125,72 +125,155 @@ z-index:9999;
 
 }
 
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 
 nav{
-
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 8%;
-background:rgba(15,23,42,.9);
-backdrop-filter:blur(10px);
-z-index:999;
-
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 8%;
+    background:rgba(15,23,42,.92);
+    backdrop-filter:blur(12px);
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+    z-index:1000;
 }
 
 .logo{
-
-color:white;
-font-size:28px;
-font-weight:700;
-
+    color:#fff;
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:1px;
 }
 
 .logo span{
-
-color:#60a5fa;
-
+    color:#60a5fa;
 }
 
 nav ul{
-
-display:flex;
-list-style:none;
-
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
 }
 
 nav ul li{
-
-margin-left:25px;
-
+    margin:0;
 }
 
 nav ul li a{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s ease;
+}
 
-color:white;
-text-decoration:none;
-transition:.3s;
-
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#60a5fa;
+    transition:.3s;
 }
 
 nav ul li a:hover{
-
-color:#60a5fa;
-
+    color:#60a5fa;
 }
 
-/* MOBILE MENU */
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* ================= HAMBURGER ================= */
 
 .menu-btn{
+    display:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    transition:.3s;
+}
 
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
+.menu-btn:hover{
+    color:#60a5fa;
+}
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+nav{
+    padding:15px 6%;
+}
+
+.logo{
+    font-size:24px;
+}
+
+.menu-btn{
+    display:block;
+    z-index:1001;
+}
+
+nav ul{
+    position:absolute;
+    top:70px;
+    left:-100%;
+    width:100%;
+    background:#0f172a;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding:25px 0;
+    transition:left .4s ease;
+    z-index:1000;
+}
+
+nav ul.show{
+    left:0;
+}
+
+nav ul li{
+    width:100%;
+    text-align:center;
+    margin:0;
+}
+
+nav ul li a{
+    display:block;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+}
+
+.hero h1{
+    font-size:38px;
+}
+
+.hero h2{
+    font-size:22px;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+.profile{
+    width:150px;
+    height:150px;
+}
+
+.btn{
+    width:100%;
+    margin:10px 0;
+}
 
 }
 
@@ -656,27 +739,16 @@ transition:1s;
 Mashaba<span>.</span>
 
 </div>
-
 <div class="menu-btn" onclick="toggleMenu()">
-
-<i class="fas fa-bars"></i>
-
+    <i class="fas fa-bars"></i>
 </div>
-
 <ul id="menu">
-
-<li><a href="#home">Home</a></li>
-
-<li><a href="#about">About</a></li>
-
-<li><a href="#skills">Skills</a></li>
-
-<li><a href="#education">Education</a></li>
-
-<li><a href="#projects">Projects</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
 </ul>
 
 </nav>
@@ -1611,16 +1683,36 @@ document.querySelector(".toggle").innerHTML="🌙";
 
 }
 
-/* MOBILE MENU */
+  /* MOBILE MENU */
 
-function toggleMenu(){
+const menu = document.getElementById("menu");
+const menuBtn = document.querySelector(".menu-btn");
 
-document.getElementById("menu").classList.toggle("show");
+function toggleMenu() {
+
+    menu.classList.toggle("show");
+
+    if (menu.classList.contains("show")) {
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }
 
 }
 
-/* TYPING EFFECT */
+// Close menu when a navigation link is clicked
+document.querySelectorAll("#menu a").forEach(link => {
 
+    link.addEventListener("click", () => {
+
+        menu.classList.remove("show");
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+
+    });
+
+});
+
+/* TYPING EFFECT */
 
 const words=[
 
