@@ -192,7 +192,6 @@ nav ul li a:hover::after{
 }
 
 /* ================= HAMBURGER ================= */
-
 .menu-btn{
     display:none;
     color:#fff;
@@ -204,6 +203,19 @@ nav ul li a:hover::after{
 .menu-btn:hover{
     color:#60a5fa;
 }
+
+/* PROFILE IMAGE */
+
+.profile{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    margin-bottom:25px;
+}
+
 /* ================= MOBILE ================= */
 
 @media (max-width:768px){
@@ -283,6 +295,7 @@ nav ul li a:hover::after{
     }
 
 }
+
 /* HERO */
 
 .hero{
@@ -305,13 +318,6 @@ background-attachment:fixed;
 
 color:#fff;
 
-}
-
-.hero-content{
-
-max-width:900px;
-width:100%;
-margin:auto;
 }
     
 .hero-content{
@@ -367,9 +373,6 @@ transform:translateY(-5px);
 }
 
 /* RESPONSIVE */
-
-
-}
 .container{
 width:90%;
 max-width:1200px;
@@ -1142,8 +1145,8 @@ Python fundamentals and application development.
 
 <div class="project-grid">
 
-<div class="project-card">
-
+<div class="project-card" data-category="HTML">
+    
 <img src="project1.jpg" alt="Portfolio Website">
 
 <div class="project-content">
@@ -1167,8 +1170,8 @@ GitHub
 </div>
 
 </div>
-
-<div class="project-card">
+    
+<div class="project-card" data-category="JavaScript">
 
 <img src="project2.jpg" alt="Mechanic Finder">
 
@@ -1193,8 +1196,8 @@ GitHub
 </div>
 
 </div>
-
-<div class="project-card">
+    
+<div class="project-card" data-category="Python">
 
 <img src="project3.jpg" alt="Hardware System">
 
