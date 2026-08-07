@@ -1914,26 +1914,36 @@ behavior:"smooth"
 
 /* PROJECT FILTER */
 
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".project-card");
 
-let filterButtons=document.querySelectorAll(".filter-btn");
+filterBtns.forEach(btn => {
 
+    btn.addEventListener("click", () => {
 
-let projects=document.querySelectorAll(".project-card");
+        filterBtns.forEach(b => {
+            b.classList.remove("active");
+        });
 
+        btn.classList.add("active");
 
+        const filter = btn.textContent.trim();
 
-filterButtons.forEach(button=>{
+        projects.forEach(project => {
 
+            const category = project.dataset.category;
 
-button.addEventListener("click",()=>{
+            if (filter === "All" || category === filter) {
+                project.style.display = "block";
+            } else {
+                project.style.display = "none";
+            }
 
+        });
 
-filterButtons.forEach(btn=>{
-
-btn.classList.remove("active");
+    });
 
 });
-
 
 button.classList.add("active");
 
